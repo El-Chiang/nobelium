@@ -12,7 +12,7 @@ export default {
           DEFAULT: config.lightBackground || '#ffffff'
         },
         night: {
-          DEFAULT: config.darkBackground || '#111827'
+          DEFAULT: config.darkBackground || '#374151'
         }
       },
       fontFamily: {

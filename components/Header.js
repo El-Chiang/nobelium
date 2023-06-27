@@ -39,7 +39,7 @@ export default function Header ({ navBarTitle, fullWidth }) {
 
   // Favicon
 
-  const resolveFavicon = fallback => !fallback && dark ? '/favicon.dark.png' : '/favicon.png'
+  const resolveFavicon = fallback => !fallback && dark ? '/favicon.svg' : '/favicon.svg'
   const [favicon, _setFavicon] = useState(resolveFavicon())
   const setFavicon = fallback => _setFavicon(resolveFavicon(fallback))
 
@@ -105,8 +105,8 @@ export default function Header ({ navBarTitle, fullWidth }) {
           <Link href="/" aria-label={BLOG.title}>
             <Image
               src={favicon}
-              width={24}
-              height={24}
+              width={64}
+              height={64}
               alt={BLOG.title}
               onError={() => setFavicon(true)}
             />
