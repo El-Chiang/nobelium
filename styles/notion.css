@@ -109,6 +109,12 @@ svg + .notion-page-title-text {
 pre[class*='language-'] {
   line-height: inherit;
 }
+.notion-code[class*='language-'] {
+  background-color: #101827;
+}
+code[class*="language-"], pre[class*="language-"] {
+  text-shadow: none;
+}
 
 .notion-bookmark:hover {
   @apply border-blue-400;
