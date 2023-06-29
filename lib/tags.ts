@@ -32,7 +32,7 @@ const TAG_DATA: Record<TagSlug, TagData> = {
     slug: TAG_SLUGS.Tech,
   },
   [TAG_SLUGS.Update]: {
-    name: 'アップデート',
+    name: '动态',
     emoji: '📝',
     slug: TAG_SLUGS.Update,
   },
