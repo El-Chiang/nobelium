@@ -1,27 +1,32 @@
-import classNames from 'classnames';
-import { useTheme } from 'next-themes';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useCallback, useEffect, useMemo, useRef } from 'react';
-import { SunIcon } from '@heroicons/react/solid';
-import { MoonIcon } from '@heroicons/react/solid';
-import BLOG from '~/blog.config';
-import { fetchLocaleLang } from '~/lib/i18n/lang';
-import { Twemoji } from './Twemoji';
+import { Twemoji } from "./Twemoji";
+import { SunIcon } from "@heroicons/react/solid";
+import { MoonIcon } from "@heroicons/react/solid";
+import classNames from "classnames";
+import { useTheme } from "next-themes";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import BLOG from "~/blog.config";
+import { fetchLocaleLang } from "~/lib/i18n/lang";
 
 const locale = fetchLocaleLang();
 const links = [
-  { id: 1, name: locale.NAV.INDEX, to: BLOG.path || '/', show: true },
-  { id: 2, name: locale.NAV.ABOUT, to: '/about', show: BLOG.showAbout },
-  { id: 3, name: locale.NAV.GALLERY, to: '/gallery', show: BLOG.showAbout },
-  { id: 4, name: locale.NAV.RSS, to: '/feed', show: true },
+  { id: 1, name: locale.NAV.INDEX, to: BLOG.path || "/", show: true },
+  { id: 2, name: locale.NAV.ABOUT, to: "/about", show: BLOG.showAbout },
+  { id: 3, name: locale.NAV.GALLERY, to: "/gallery", show: BLOG.showAbout },
+  { id: 4, name: locale.NAV.RSS, to: "/feed", show: true },
 ];
 
 const NavBar: React.VFC = () => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const activeNav = useMemo(() => {
-    const curr = links.find(link => router.asPath === link.to || router.asPath.startsWith(link.to));
+    console.log(router.asPath);
+    const curr = links.find(
+      (link) =>
+        router.asPath === link.to ||
+        (router.asPath.startsWith(link.to) && link.id !== 1)
+    );
     if (curr) return curr.to;
     return links[0].to;
   }, [router]);
@@ -34,23 +39,27 @@ const NavBar: React.VFC = () => {
             link.show && (
               <li
                 key={link.id}
-                className={classNames('block ml-4 text-black dark:text-gray-50 nav', {
-                  'border-b-2 border-blue-700 dark:border-blue-400': link.to === activeNav,
-                })}
+                className={classNames(
+                  "block ml-4 text-black dark:text-gray-50 nav",
+                  {
+                    "border-b-2 border-blue-700 dark:border-blue-400":
+                      link.to === activeNav,
+                  }
+                )}
               >
                 <Link href={link.to}>
                   <a>{link.name}</a>
                 </Link>
               </li>
-            ),
+            )
         )}
         <li className="ml-4">
           <button
             className="group block p-1 bg-night hover:bg-day dark:bg-day dark:hover:bg-night rounded-full transition-all duration-300"
-            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             aria-label="toggle Dark Mode"
           >
-            {theme === 'light' ? (
+            {theme === "light" ? (
               <MoonIcon className="w-5 h-5 text-day group-hover:text-night" />
             ) : (
               <SunIcon className="w-5 h-5 text-night group-hover:text-day" />
@@ -73,12 +82,12 @@ export const Header: React.VFC<HeaderProps> = ({ navBarTitle, fullWidth }) => {
   const handler = useCallback(([entry]: IntersectionObserverEntry[]) => {
     if (navRef && navRef.current && !BLOG.autoCollapsedNavBar) {
       if (!entry.isIntersecting && entry !== undefined) {
-        navRef.current.classList.add('sticky-nav-full');
+        navRef.current.classList.add("sticky-nav-full");
       } else {
-        navRef.current.classList.remove('sticky-nav-full');
+        navRef.current.classList.remove("sticky-nav-full");
       }
     } else {
-      navRef?.current?.classList.add('remove-sticky');
+      navRef?.current?.classList.add("remove-sticky");
     }
   }, []);
   useEffect(() => {
@@ -94,11 +103,11 @@ export const Header: React.VFC<HeaderProps> = ({ navBarTitle, fullWidth }) => {
       <div className="h-4 md:h-12" ref={sentinalRef}></div>
       <div
         className={classNames(
-          'sticky-nav m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-12 py-8 bg-opacity-60',
+          "sticky-nav m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-12 py-8 bg-opacity-60",
           {
-            'px-4 md:px-24': fullWidth,
-            'max-w-4xl px-4': !fullWidth,
-          },
+            "px-4 md:px-24": fullWidth,
+            "max-w-4xl px-4": !fullWidth,
+          }
         )}
         id="sticky-nav"
         ref={navRef}
@@ -107,15 +116,18 @@ export const Header: React.VFC<HeaderProps> = ({ navBarTitle, fullWidth }) => {
           <Link href="/">
             <a aria-label={BLOG.title}>
               <div className="min-w-max">
-                <Twemoji emoji={'🌖'} size={28} />
+                <Twemoji emoji={"🌖"} size={28} />
               </div>
             </a>
           </Link>
           {navBarTitle ? (
-            <p className="ml-2 font-medium text-day dark:text-night header-name">{navBarTitle}</p>
+            <p className="ml-2 font-medium text-day dark:text-night header-name">
+              {navBarTitle}
+            </p>
           ) : (
             <p className="ml-2 font-medium text-day dark:text-night header-name">
-              {BLOG.title} -<span className="font-normal">{BLOG.description}</span>
+              {BLOG.title} -
+              <span className="font-normal">{BLOG.description}</span>
             </p>
           )}
         </div>
