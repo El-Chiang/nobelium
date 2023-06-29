@@ -1,36 +1,37 @@
-import { config } from './lib/server/config'
-import { FONTS_SANS, FONTS_SERIF } from './consts'
+const BLOG = require('./blog.config');
+const { fontFamily } = require('tailwindcss/defaultTheme');
+const CJK = require('./lib/cjk');
+const fontSansCJK = !CJK() ? [] : [`"Noto Sans CJK ${CJK()}"`, `"Noto Sans ${CJK()}"`];
+const fontSerifCJK = !CJK() ? [] : [`"Noto Serif CJK ${CJK()}"`, `"Noto Serif ${CJK()}"`];
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
-  content: ['./pages/**/*.js', './components/**/*.js', './layouts/**/*.js'],
-  darkMode: 'class',
+/**
+ * @type {import('@types/tailwindcss/tailwind-config').TailwindConfig}
+ */
+const tailwindConfig = {
+  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}', './layouts/**/*.{js,ts,jsx,tsx}'],
+  mode: 'jit',
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
         day: {
-          DEFAULT: config.lightBackground || '#ffffff'
+          DEFAULT: BLOG.lightBackground || '#ffffff',
         },
         night: {
-          DEFAULT: config.darkBackground || '#374151'
-        }
+          DEFAULT: BLOG.darkBackground || '#111827',
+        },
       },
       fontFamily: {
-        sans: FONTS_SANS,
-        serif: FONTS_SERIF,
-        noEmoji: [
-          '"IBM Plex Sans"',
-          'ui-sans-serif',
-          'system-ui',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          'sans-serif'
-        ]
-      }
-    }
+        sans: ['"IBM Plex Sans"', ...fontFamily.sans, ...fontSansCJK],
+        serif: ['"Source Serif"', ...fontFamily.serif, ...fontSerifCJK],
+        noEmoji: ['"IBM Plex Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+      },
+    },
   },
   variants: {
-    extend: {}
+    extend: {},
   },
-  plugins: []
-}
+  plugins: [],
+};
+
+module.exports = tailwindConfig;

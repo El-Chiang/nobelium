@@ -1,27 +1,32 @@
+/**
+ * @type {import('~/types').BlogConfig}
+ */
 const BLOG = {
-  title: '🐱 喵喵喵',
+  title: 'jing1.moe',
   author: 'El Chiang',
-  email: 'jing1downey@gmail.com',
-  link: 'https://nobelium.vercel.app',
-  description: 'El\'s blog.',
-  lang: 'zh-CN', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
+  email: 'ho45ok@gmail.com',
+  link: 'https://blog.jing1.moe',
+  externalHPLink: 'https://bento.me/yokinist',
+  description: 'El\'s Blog',
+  lang: 'ja-JP', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
-  appearance: 'auto', // ['light', 'dark', 'auto'],
+  appearance: 'auto', // ['light', 'dark'],
   font: 'sans-serif', // ['sans-serif', 'serif']
   lightBackground: '#ffffff', // use hex value, don't forget '#' e.g #fffefc
-  darkBackground: '#374151', // use hex value, don't forget '#'
+  darkBackground: '#040808', // use hex value, don't forget '#'
   path: '', // leave this empty unless you want to deploy Nobelium in a folder
-  since: 2021, // If leave this empty, current year will be used.
-  postsPerPage: 7,
-  sortByDate: false,
+  profileSlug: 'profile',
+  since: 2023, // If leave this empty, current year will be used.
+  sortByDate: true,
   showAbout: true,
   showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
-  ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
+  ogImageGenerateURL: 'https://simple-og-image.vercel.app', // The link to generate OG image, don't end with a slash
+  // detail: https://github.com/yokinist/og-image/blob/main/api/_lib/types.ts#L2-L12
   socialLink: 'https://twitter.com/jing1meow',
   seo: {
-    keywords: ['Blog', 'Website', 'Notion'],
-    googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
+    keywords: ['jing1', 'El Chiang'],
+    googleSiteVerification: '', // Remove the value or replace it with your own google site verification code
   },
   notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！
   notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
@@ -42,21 +47,22 @@ const BLOG = {
     gitalkConfig: {
       repo: '', // The repository of store comments
       owner: '',
-      admin: [],
       clientID: '',
-      clientSecret: '',
-      distractionFreeMode: false
+      clientSecret: process.env.GITALK_CLIENT_SECRET,
+      admin: [],
+      id: '', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false,
     },
     utterancesConfig: {
-      repo: ''
+      repo: '',
     },
     cusdisConfig: {
-      appId: '', // data-app-id
+      appId: '', // data-app-id'
       host: 'https://cusdis.com', // data-host, change this if you're using self-hosted version
-      scriptSrc: 'https://cusdis.com/js/cusdis.es.js' // change this if you're using self-hosted version
-    }
+      scriptSrc: 'https://cusdis.com/js/cusdis.es.js', // change this if you're using self-hosted version
+    },
   },
-  isProd: process.env.VERCEL_ENV === 'production' // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
-}
+  isProd: process.env.VERCEL_ENV === 'production', // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
+};
 // export default BLOG
-module.exports = BLOG
+module.exports = BLOG;
