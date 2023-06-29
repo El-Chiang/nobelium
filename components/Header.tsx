@@ -13,15 +13,16 @@ const locale = fetchLocaleLang();
 const links = [
   { id: 1, name: locale.NAV.INDEX, to: BLOG.path || '/', show: true },
   { id: 2, name: locale.NAV.ABOUT, to: '/about', show: BLOG.showAbout },
-  // { id: 4, name: locale.NAV.RSS, to: '/feed', show: true },
+  { id: 3, name: locale.NAV.GALLERY, to: '/gallery', show: BLOG.showAbout },
+  { id: 4, name: locale.NAV.RSS, to: '/feed', show: true },
 ];
 
 const NavBar: React.VFC = () => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const activeNav = useMemo(() => {
-    if (router.asPath === links[0].to) return links[0].to;
-    if (router.asPath === links[1].to) return links[1].to;
+    const curr = links.find(link => router.asPath === link.to);
+    if (curr) return curr.to;
     return links[0].to;
   }, [router]);
 

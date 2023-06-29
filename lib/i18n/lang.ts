@@ -7,6 +7,7 @@ const lang = {
       RSS: 'RSS',
       SEARCH: 'Search',
       ABOUT: 'About',
+      GALLERY: 'Gallery',
     },
     PAGINATION: {
       PREV: 'Prev',
@@ -27,6 +28,7 @@ const lang = {
       RSS: '订阅',
       SEARCH: '搜索',
       ABOUT: '关于',
+      GALLERY: 'Gallery',
     },
     PAGINATION: {
       PREV: '上一页',
@@ -47,6 +49,7 @@ const lang = {
       RSS: '訂閱',
       SEARCH: '搜尋',
       ABOUT: '關於',
+      GALLERY: 'Gallery',
     },
     PAGINATION: {
       PREV: '上一頁',
@@ -67,6 +70,7 @@ const lang = {
       RSS: '訂閱',
       SEARCH: '搜尋',
       ABOUT: '關於',
+      GALLERY: 'Gallery',
     },
     PAGINATION: {
       PREV: '上一頁',
@@ -87,6 +91,7 @@ const lang = {
       RSS: 'RSS',
       SEARCH: 'Search',
       ABOUT: 'About',
+      GALLERY: 'Gallery',
     },
     PAGINATION: {
       PREV: 'Prev',
@@ -107,6 +112,7 @@ const lang = {
       RSS: 'RSS',
       SEARCH: 'Buscar',
       ABOUT: 'Acerca de mí',
+      GALLERY: 'Gallery',
     },
     PAGINATION: {
       PREV: 'Anterior',
