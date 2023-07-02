@@ -21,7 +21,6 @@ const NavBar: React.VFC = () => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const activeNav = useMemo(() => {
-    console.log(router.asPath);
     const curr = links.find(
       (link) =>
         router.asPath === link.to ||

@@ -4,6 +4,7 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ExtendedRecordMap } from 'notion-types/build/esm/maps';
+import { useEffect } from 'react';
 import { NotionRenderer, Equation, Code, CollectionRow, Collection } from 'react-notion-x';
 import type { Tweet } from 'react-static-tweets';
 import BLOG from '~/blog.config';
@@ -42,7 +43,11 @@ export const Layout: React.VFC<Props> = ({
 }) => {
   const locale = useLocale();
   const router = useRouter();
-  const { theme } = useTheme();
+  const { theme, setTheme, systemTheme } = useTheme();
+
+  useEffect(() => {
+    setTheme(systemTheme || 'light');
+  }, [setTheme, systemTheme]);
 
   const renderContents = () => (
     <article>
