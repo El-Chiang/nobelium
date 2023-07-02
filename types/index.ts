@@ -39,7 +39,7 @@ export type BlogConfig = {
   externalHPLink: string;
   description: string;
   lang: 'en-US' | 'zh-CN' | 'zh-HK' | 'zh-TW' | 'ja-JP' | 'es-ES';
-  appearance: 'dark' | 'light' | 'system';
+  appearance: 'dark' | 'light' | 'auto';
   font: 'sans-serif' | 'serif';
   lightBackground: `#${string}`;
   darkBackground: `#${string}`;
