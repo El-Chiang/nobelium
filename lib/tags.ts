@@ -4,17 +4,12 @@ const TAG_SLUGS = {
   All: 'all',
   Tech: 'tech',
   Update: 'update',
+  Thinking: 'thinking',
   Playlist: 'playlist',
-  Ikigomi: 'ikigomi',
-  Sento: 'sento',
   Link: 'link',
-  ProductDev: 'product-dev',
-  Sauna: 'sauna',
   Items: 'items',
   Notion: 'notion',
-  Solana: 'solana',
-  Polygon: 'polygon',
-  Solidity: 'solidity',
+  Game: 'game',
 } as const;
 
 export type TagSlug = ValueOf<typeof TAG_SLUGS>;
@@ -32,8 +27,8 @@ const TAG_DATA: Record<TagSlug, TagData> = {
     slug: TAG_SLUGS.Tech,
   },
   [TAG_SLUGS.Update]: {
-    name: '动态',
-    emoji: '📝',
+    name: '近況報告',
+    emoji: '📢',
     slug: TAG_SLUGS.Update,
   },
   [TAG_SLUGS.Playlist]: {
@@ -41,31 +36,17 @@ const TAG_DATA: Record<TagSlug, TagData> = {
     emoji: '🎧',
     slug: TAG_SLUGS.Playlist,
   },
-  [TAG_SLUGS.Ikigomi]: {
-    name: '意気込み',
-    emoji: '✊',
-    slug: TAG_SLUGS.Ikigomi,
-  },
-  [TAG_SLUGS.Sento]: {
-    name: '銭湯',
-    emoji: '♨️',
-    slug: TAG_SLUGS.Sento,
-  },
-  [TAG_SLUGS.Sauna]: {
-    name: 'サウナ',
-    emoji: '🧖‍♂️',
-    slug: TAG_SLUGS.Sauna,
-  },
   [TAG_SLUGS.Link]: {
     name: '外部リンク',
     emoji: '🔗',
     slug: TAG_SLUGS.Link,
   },
-  [TAG_SLUGS.ProductDev]: {
-    name: 'プロダクト開発',
-    emoji: '🛠',
-    slug: TAG_SLUGS.ProductDev,
+  [TAG_SLUGS.Thinking]: {
+    name: '思考の断片',
+    emoji: '💭',
+    slug: TAG_SLUGS.Thinking,
   },
+
   [TAG_SLUGS.Items]: {
     name: 'アイテム',
     emoji: '✨',
@@ -76,20 +57,10 @@ const TAG_DATA: Record<TagSlug, TagData> = {
     emoji: '📓',
     slug: TAG_SLUGS.Notion,
   },
-  [TAG_SLUGS.Solidity]: {
-    name: 'Solidity',
-    emoji: '💠',
-    slug: TAG_SLUGS.Solidity,
-  },
-  [TAG_SLUGS.Polygon]: {
-    name: 'Polygon',
-    emoji: '♋️',
-    slug: TAG_SLUGS.Polygon,
-  },
-  [TAG_SLUGS.Solana]: {
-    name: 'Solana',
-    emoji: '👾',
-    slug: TAG_SLUGS.Solana,
+  [TAG_SLUGS.Game]: {
+    name: 'ゲーム',
+    emoji: '🎮',
+    slug: TAG_SLUGS.Game,
   },
   [TAG_SLUGS.All]: {
     name: 'All',
