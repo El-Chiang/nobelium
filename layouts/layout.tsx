@@ -46,7 +46,7 @@ export const Layout: React.VFC<Props> = ({
   const { theme, setTheme, systemTheme } = useTheme();
 
   useEffect(() => {
-    setTheme(systemTheme || 'light');
+    setTheme(systemTheme || 'dark');
   }, [setTheme, systemTheme]);
 
   const renderContents = () => (
